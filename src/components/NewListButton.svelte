@@ -18,6 +18,9 @@
                 background: hsl(202, 60%, 58%);
             }
         }
+        &:first-child {
+            margin-left: 1rem;
+        }
     }
 </style>
 
