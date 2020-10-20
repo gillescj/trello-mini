@@ -5,6 +5,7 @@
 <style type="text/scss">
     header {
         display: flex;
+        padding: 0.5rem;
         input {
             background: inherit;
             font-size: 1.2rem;

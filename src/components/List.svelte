@@ -38,14 +38,12 @@
         background: hsl(228, 14%, 93%);
         border-radius: 0.25rem;
         box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.025), 0 100px 80px rgba(0, 0, 0, 0.05);
-        margin: 0 1rem;
+        margin: 0 0.5rem;
         flex-shrink: 0;
         &:first-child {
-            margin-left: 0;
+            margin-left: 1rem;
         }
-        &:last-child {
-            margin-right: 0;
-        }
+
         .options-btn {
             color: #172b4d;
             background: inherit;

@@ -8,7 +8,9 @@
         background: hsl(202, 100%, 38%);
     }
     main {
-        padding: 1rem;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        height: 100%;
     }
 </style>
 
