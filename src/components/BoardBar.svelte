@@ -11,6 +11,8 @@
             font-size: 1.2rem;
             color: white;
             font-weight: 700;
+            margin-bottom: 0;
+            margin-right: 0.5rem;
             border: none;
             cursor: pointer;
             &:hover {
@@ -28,6 +30,7 @@
             border: none;
             cursor: pointer;
             color: white;
+            margin-bottom: 0;
             &:hover {
                 background: hsl(202, 60%, 58%);
             }
