@@ -1,6 +1,7 @@
 <script>
     import MenuSVG from '../assets/svgs/MenuSVG.svelte';
     import PlusSVG from '../assets/svgs/PlusSVG.svelte';
+    import CancelSVG from '../assets/svgs/CancelSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
     import Card from './Card.svelte';
 
@@ -20,6 +21,11 @@
         if (cardTitle.length > 0) {
             cards = [...cards, { title: cardTitle, order: cards.length + 1 }];
         }
+        cardTitle = '';
+    };
+
+    const cancelNewCard = () => {
+        newCard = false;
         cardTitle = '';
     };
 </script>
@@ -66,7 +72,12 @@
                 cursor: text;
             }
         }
-        .add-card-btn {
+
+        .new-card-options {
+            display: flex;
+            justify-content: space-between;
+        }
+        .new-card-btn {
             display: grid;
             grid-template-columns: auto 1fr;
             justify-content: start;
@@ -77,6 +88,24 @@
             .add-card-text {
                 text-align: start;
             }
+            &:hover {
+                background: hsl(227, 13%, 87%);
+            }
+        }
+
+        .add-card-btn {
+            justify-self: start;
+            background: #61bd4f;
+            border: none;
+            color: white;
+            margin-right: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+        }
+        .cancel-btn {
+            border: none;
+            background: inherit;
+            cursor: pointer;
             &:hover {
                 background: hsl(227, 13%, 87%);
             }
@@ -93,14 +122,21 @@
             </SVGContainer>
         </button>
     </div>
+    {#each cards as card}
+        <Card title={`${card.order} ${card.title}`} />
+    {/each}
     {#if newCard}
         <textarea bind:value={cardTitle} />
-        <button on:click={addCard}>Okay</button>
+        <div class="new-card-options">
+            <button class="add-card-btn" on:click={addCard}>Add Card</button>
+            <button class="cancel-btn" on:click={cancelNewCard}>
+                <SVGContainer>
+                    <CancelSVG />
+                </SVGContainer>
+            </button>
+        </div>
     {:else}
-        {#each cards as card}
-            <Card title={`${card.order} ${card.title}`} />
-        {/each}
-        <button class="add-card-btn" on:click={() => (newCard = !newCard)}>
+        <button class="new-card-btn" on:click={() => (newCard = !newCard)}>
             <SVGContainer class="plus-svg-container">
                 <PlusSVG />
             </SVGContainer>
