@@ -74,6 +74,12 @@
             }
         }
 
+        textarea {
+            box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
+                0 0.3px 0px rgba(0, 0, 0, 0.035), 0 0.4px 0px rgba(0, 0, 0, 0.042),
+                0 0.8px 0px rgba(0, 0, 0, 0.05), 0 2px 0px rgba(0, 0, 0, 0.07);
+        }
+
         .new-card-options {
             display: flex;
             justify-content: space-between;
@@ -128,7 +134,7 @@
         <Card title={`${card.order} ${card.title}`} />
     {/each}
     {#if newCard}
-        <textarea bind:value={cardTitle} />
+        <textarea bind:value={cardTitle} placeholder="Enter a title for this card..." />
         <div class="new-card-options">
             <button class="add-card-btn" on:click={addCard}>Add Card</button>
             <button class="cancel-btn" on:click={cancelNewCard}>
