@@ -34,10 +34,13 @@
     .container {
         display: grid;
         width: 17rem;
+        font-size: 14px;
         padding: 0.5rem;
         background: hsl(228, 14%, 93%);
         border-radius: 0.25rem;
-        box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.025), 0 100px 80px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
+            0 0.3px 0px rgba(0, 0, 0, 0.035), 0 0.4px 0px rgba(0, 0, 0, 0.042),
+            0 0.8px 0px rgba(0, 0, 0, 0.05), 0 2px 0px rgba(0, 0, 0, 0.07);
         margin: 0 0.5rem;
         flex-shrink: 0;
         &:first-child {
