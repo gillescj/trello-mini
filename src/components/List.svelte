@@ -83,6 +83,9 @@
         .new-card-options {
             display: flex;
             justify-content: space-between;
+            button {
+                margin: 0;
+            }
         }
         .new-card-btn {
             display: grid;
