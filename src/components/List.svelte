@@ -5,10 +5,10 @@
     import SVGContainer from './SVGContainer.svelte';
     import Card from './Card.svelte';
 
-    let name = 'Things To Do';
-    let cardTitle;
-    let cards = [{ title: 'Here is a card title for testing', order: 1 }];
+    export let name = 'Things To Do';
+    export let cards = [{ title: 'Here is a card title for testing', order: 1 }];
     let newCard = false;
+    let cardTitle;
 
     const onKeydown = (event) => {
         if (event.code === 'Enter') {
