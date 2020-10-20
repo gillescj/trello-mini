@@ -35,16 +35,16 @@
         display: grid;
         width: 17rem;
         font-size: 14px;
-        padding: 0.5rem;
+        padding: 0.4rem;
         background: hsl(228, 14%, 93%);
         border-radius: 0.25rem;
         box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
             0 0.3px 0px rgba(0, 0, 0, 0.035), 0 0.4px 0px rgba(0, 0, 0, 0.042),
             0 0.8px 0px rgba(0, 0, 0, 0.05), 0 2px 0px rgba(0, 0, 0, 0.07);
-        margin: 0 0.5rem;
+        margin: 0 0.25rem;
         flex-shrink: 0;
         &:first-child {
-            margin-left: 1rem;
+            margin-left: 0.5rem;
         }
 
         .options-btn {
@@ -61,6 +61,7 @@
             grid-template-columns: 1fr auto;
         }
         input {
+            padding: 0.2rem;
             width: 100%;
             background: inherit;
             color: #172b4d;
