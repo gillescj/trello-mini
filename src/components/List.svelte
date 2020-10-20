@@ -2,15 +2,25 @@
     import MenuSVG from '../assets/svgs/MenuSVG.svelte';
     import PlusSVG from '../assets/svgs/PlusSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
+    import Card from './Card.svelte';
 
     let name = 'Things To Do';
-    let description;
+    let cardTitle;
+    let cards = [{ title: 'Here is a card title for testing', order: 1 }];
     let newCard = false;
 
     const onKeydown = (event) => {
         if (event.code === 'Enter') {
             document.activeElement.blur();
         }
+    };
+
+    const addCard = () => {
+        newCard = false;
+        if (cardTitle.length > 0) {
+            cards = [...cards, { title: cardTitle, order: cards.length + 1 }];
+        }
+        cardTitle = '';
     };
 </script>
 
@@ -56,6 +66,21 @@
                 cursor: text;
             }
         }
+        .add-card-btn {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            justify-content: start;
+            grid-gap: 0.5rem;
+            background: inherit;
+            border: none;
+            cursor: pointer;
+            .add-card-text {
+                text-align: start;
+            }
+            &:hover {
+                background: hsl(227, 13%, 87%);
+            }
+        }
     }
 </style>
 
@@ -69,13 +94,17 @@
         </button>
     </div>
     {#if newCard}
-        <textarea bind:value={description} />
-        <button on:click={() => (newCard = false)}>Okay</button>
+        <textarea bind:value={cardTitle} />
+        <button on:click={addCard}>Okay</button>
     {:else}
-        <button on:click={() => (newCard = !newCard)}>
-            <SVGContainer>
+        {#each cards as card}
+            <Card title={`${card.order} ${card.title}`} />
+        {/each}
+        <button class="add-card-btn" on:click={() => (newCard = !newCard)}>
+            <SVGContainer class="plus-svg-container">
                 <PlusSVG />
             </SVGContainer>
-            Add a card</button>
+            <div class="add-card-text">Add a card</div>
+        </button>
     {/if}
 </div>
