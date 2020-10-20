@@ -13,22 +13,25 @@
             font-weight: 700;
             border: none;
             cursor: pointer;
+            &:hover {
+                background: hsl(202, 60%, 58%);
+            }
+            &:focus {
+                background: white;
+                color: inherit;
+                cursor: text;
+            }
         }
-    }
-    input:hover {
-        background: hsl(202, 60%, 58%);
-    }
-    input:focus {
-        background: white;
-        color: inherit;
-        cursor: text;
-    }
 
-    button {
-        background: hsl(202, 60%, 50%);
-        border: none;
-        cursor: pointer;
-        color: white;
+        button {
+            background: hsl(202, 60%, 50%);
+            border: none;
+            cursor: pointer;
+            color: white;
+            &:hover {
+                background: hsl(202, 60%, 58%);
+            }
+        }
     }
 </style>
 
