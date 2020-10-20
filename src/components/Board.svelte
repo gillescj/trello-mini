@@ -1,5 +1,6 @@
 <script>
     import List from './List.svelte';
+    import NewListButton from './NewListButton.svelte';
 </script>
 
 <style type="text/scss">
@@ -17,4 +18,5 @@
     <List />
     <List />
     <List />
+    <NewListButton />
 </div>
