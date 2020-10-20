@@ -33,7 +33,7 @@
 <style type="text/scss">
     .container {
         display: grid;
-        width: 20rem;
+        width: 17rem;
         padding: 0.5rem;
         background: hsl(228, 14%, 93%);
         border-radius: 0.25rem;
@@ -84,6 +84,7 @@
             grid-gap: 0.5rem;
             background: inherit;
             border: none;
+            margin-bottom: 0;
             cursor: pointer;
             .add-card-text {
                 text-align: start;
