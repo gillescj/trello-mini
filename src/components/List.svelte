@@ -1,6 +1,6 @@
 <script>
-    import MenuSVG from './assets/svgs/MenuSVG.svelte';
-    import PlusSVG from './assets/svgs/PlusSVG.svelte';
+    import MenuSVG from '../assets/svgs/MenuSVG.svelte';
+    import PlusSVG from '../assets/svgs/PlusSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
 
     let name = 'Things To Do';
