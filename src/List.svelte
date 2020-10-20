@@ -6,6 +6,12 @@
     let name = 'Things To Do';
     let description;
     let newCard = false;
+
+    const onKeydown = (event) => {
+        if (event.code === 'Enter') {
+            document.activeElement.blur();
+        }
+    };
 </script>
 
 <style type="text/scss">
@@ -55,7 +61,7 @@
 
 <div class="container">
     <div class="header">
-        <input bind:value={name} />
+        <input bind:value={name} on:keydown={onKeydown} />
         <button class="options-btn">
             <SVGContainer>
                 <MenuSVG />
