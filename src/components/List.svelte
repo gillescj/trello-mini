@@ -1,10 +1,10 @@
 <script>
-    import MenuSVG from '../assets/svgs/MenuSVG.svelte';
     import PlusSVG from '../assets/svgs/PlusSVG.svelte';
     import CancelSVG from '../assets/svgs/CancelSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
     import Card from './Card.svelte';
     import TextAreaAuto from './TextAreaAuto.svelte';
+    import Options from './Options.svelte';
 
     export let name = 'Things To Do';
     export let cards = [{ title: 'Here is a card title for testing', order: 1 }];
@@ -46,16 +46,6 @@
         flex-shrink: 0;
         &:first-child {
             margin-left: 0.5rem;
-        }
-
-        .options-btn {
-            color: #172b4d;
-            background: inherit;
-            border: none;
-            cursor: pointer;
-            &:hover {
-                background: hsl(227, 13%, 87%);
-            }
         }
         .header {
             display: grid;
@@ -115,11 +105,7 @@
 <div class="container">
     <div class="header">
         <TextAreaAuto bind:value={name} on:keydown={onKeydown} />
-        <button class="options-btn">
-            <SVGContainer>
-                <MenuSVG />
-            </SVGContainer>
-        </button>
+        <Options />
     </div>
     {#each cards as card}
         <Card title={`${card.order} ${card.title}`} />
