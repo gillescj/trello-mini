@@ -4,6 +4,7 @@
     import CancelSVG from '../assets/svgs/CancelSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
     import Card from './Card.svelte';
+    import TextAreaAuto from './TextAreaAuto.svelte';
 
     export let name = 'Things To Do';
     export let cards = [{ title: 'Here is a card title for testing', order: 1 }];
@@ -60,20 +61,6 @@
             display: grid;
             grid-template-columns: 1fr auto;
         }
-        input {
-            padding: 0.2rem;
-            width: 100%;
-            background: inherit;
-            color: #172b4d;
-            border: 3px solid transparent;
-            font-weight: 600;
-            cursor: pointer;
-            &:focus {
-                background: white;
-                border: 3px solid hsl(202, 100%, 38%);
-                cursor: text;
-            }
-        }
 
         textarea {
             box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
@@ -127,7 +114,7 @@
 
 <div class="container">
     <div class="header">
-        <input bind:value={name} on:keydown={onKeydown} />
+        <TextAreaAuto bind:value={name} on:keydown={onKeydown} />
         <button class="options-btn">
             <SVGContainer>
                 <MenuSVG />
