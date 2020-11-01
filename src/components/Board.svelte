@@ -30,7 +30,6 @@
 
     const createList = () => {
         lists = [...lists, { id: uniqueId('list-'), name: '', cards: [] }];
-        console.log(lists);
     };
 </script>
 
