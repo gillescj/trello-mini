@@ -1,4 +1,5 @@
 <script>
+    const placeholderText = 'Enter List Name';
     export let value = '';
     function resize({ target }) {
         target.style.height = '1px';
@@ -36,6 +37,6 @@
     }
 </style>
 
-<textarea bind:value use:textAreaResize />
+<textarea placeholder={placeholderText} bind:value use:textAreaResize />
 
 <!-- https://svelte.dev/repl/ead0f1fcd2d4402bbbd64eca1d665341?version=3.14.1 -->
