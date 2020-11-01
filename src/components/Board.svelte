@@ -1,9 +1,11 @@
 <script>
+    import { uniqueId } from 'lodash';
     import List from './List.svelte';
     import NewListButton from './NewListButton.svelte';
 
     let lists = [
         {
+            id: uniqueId('list-'),
             name: 'Things To Do',
             cards: [
                 { title: 'Here is a card title for testing', order: 1 },
@@ -11,6 +13,7 @@
             ],
         },
         {
+            id: uniqueId('list-'),
             name: 'Bugs',
             cards: [
                 { title: 'Something wrong with x', order: 1 },
@@ -19,13 +22,15 @@
             ],
         },
         {
+            id: uniqueId('list-'),
             name: 'Done',
             cards: [{ title: 'Not enough', order: 1 }],
         },
     ];
 
     const createList = () => {
-        lists = [...lists, { name: '', cards: [] }];
+        lists = [...lists, { id: uniqueId('list-'), name: '', cards: [] }];
+        console.log(lists);
     };
 </script>
 
