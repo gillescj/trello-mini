@@ -122,7 +122,7 @@
         </div>
     {:else}
         <button class="new-card-btn" on:click={() => (newCard = !newCard)}>
-            <SVGContainer class="plus-svg-container">
+            <SVGContainer>
                 <PlusSVG />
             </SVGContainer>
             <div class="add-card-text">Add a card</div>
