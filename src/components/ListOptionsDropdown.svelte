@@ -75,6 +75,13 @@
             }
         }
     }
+    @media (max-width: 600px) {
+        .container {
+            ul {
+                width: 16rem;
+            }
+        }
+    }
 </style>
 
 <div class="container">
