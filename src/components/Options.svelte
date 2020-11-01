@@ -28,7 +28,10 @@
     </button>
     {#if open}
         <Popup>
-            <ListOptionsDropdown on:removeList on:exitPopup={() => (open = false)} />
+            <ListOptionsDropdown
+                on:moveList
+                on:removeList
+                on:exitPopup={() => (open = false)} />
         </Popup>
     {/if}
 </div>

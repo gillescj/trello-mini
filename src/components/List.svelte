@@ -20,6 +20,13 @@
         });
     }
 
+    function onMoveList(event) {
+        dispatch('moveList', {
+            where: event.detail.where,
+            id,
+        });
+    }
+
     const onKeydown = (event) => {
         if (event.code === 'Enter') {
             document.activeElement.blur();
@@ -114,7 +121,7 @@
 <div class="container">
     <div class="header">
         <TextAreaAuto bind:value={name} on:keydown={onKeydown} />
-        <Options on:removeList={onRemoveList} />
+        <Options on:moveList={onMoveList} on:removeList={onRemoveList} />
     </div>
     {#each cards as card}
         <Card title={`${card.order} ${card.title}`} />

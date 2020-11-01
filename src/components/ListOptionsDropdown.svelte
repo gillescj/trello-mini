@@ -6,7 +6,15 @@
     const dispatch = createEventDispatcher();
 
     function onRemoveList() {
+        dispatch('exitPopup');
         dispatch('removeList');
+    }
+
+    function onMoveList(direction) {
+        dispatch('exitPopup');
+        dispatch('moveList', {
+            where: direction,
+        });
     }
 
     function onClosePopup() {
@@ -62,6 +70,9 @@
                     background: hsl(227, 13%, 93%);
                 }
             }
+            .warning {
+                color: hsl(0, 80%, 35%);
+            }
         }
     }
 </style>
@@ -76,8 +87,8 @@
         </button>
     </header>
     <ul>
-        <li>Move List Left</li>
-        <li>Move List Right</li>
-        <li on:click={onRemoveList}>Remove from Board</li>
+        <li on:click={(event) => onMoveList('left')}>Move List Left</li>
+        <li on:click={(event) => onMoveList('right')}>Move List Right</li>
+        <li class="warning" on:click={onRemoveList}>Remove from Board</li>
     </ul>
 </div>

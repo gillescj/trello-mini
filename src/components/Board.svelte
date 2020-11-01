@@ -1,5 +1,6 @@
 <script>
     import { uniqueId } from 'lodash';
+    import { swap } from '../utils/helpers';
     import List from './List.svelte';
     import NewListButton from './NewListButton.svelte';
 
@@ -35,6 +36,13 @@
     const removeList = (event) => {
         lists = lists.filter((list) => list.id !== event.detail.id);
     };
+
+    const moveList = ({ detail: { id, where } }) => {
+        const targetIndex = lists.findIndex((list) => list.id === id);
+        const swappingIndex = where === 'left' ? targetIndex - 1 : targetIndex + 1;
+        if (swappingIndex < 0 || swappingIndex > lists.length - 1) return;
+        lists = swap(lists, targetIndex, swappingIndex);
+    };
 </script>
 
 <style type="text/scss">
@@ -48,7 +56,7 @@
 
 <div class="container">
     {#each lists as { id, name, cards }}
-        <List {id} {name} {cards} on:removeList={removeList} />
+        <List {id} {name} {cards} on:removeList={removeList} on:moveList={moveList} />
     {/each}
     <NewListButton on:addNewList={createList} />
 </div>
