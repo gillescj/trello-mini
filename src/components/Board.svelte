@@ -23,6 +23,10 @@
             cards: [{ title: 'Not enough', order: 1 }],
         },
     ];
+
+    const createList = () => {
+        lists = [...lists, { name: '', cards: [] }];
+    };
 </script>
 
 <style type="text/scss">
@@ -38,5 +42,5 @@
     {#each lists as { name, cards }}
         <List {name} {cards} />
     {/each}
-    <NewListButton />
+    <NewListButton on:addNewList={createList} />
 </div>
