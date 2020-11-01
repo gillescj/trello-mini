@@ -5,11 +5,20 @@
     import Card from './Card.svelte';
     import TextAreaAuto from './TextAreaAuto.svelte';
     import Options from './Options.svelte';
-
+    import { createEventDispatcher } from 'svelte';
+    export let id = 'list-0';
     export let name = 'Things To Do';
     export let cards = [{ title: 'Here is a card title for testing', order: 1 }];
     let newCard = false;
     let cardTitle;
+
+    const dispatch = createEventDispatcher();
+
+    function onRemoveList() {
+        dispatch('removeList', {
+            id: id,
+        });
+    }
 
     const onKeydown = (event) => {
         if (event.code === 'Enter') {
@@ -105,7 +114,7 @@
 <div class="container">
     <div class="header">
         <TextAreaAuto bind:value={name} on:keydown={onKeydown} />
-        <Options />
+        <Options on:removeList={onRemoveList} />
     </div>
     {#each cards as card}
         <Card title={`${card.order} ${card.title}`} />

@@ -31,6 +31,10 @@
     const createList = () => {
         lists = [...lists, { id: uniqueId('list-'), name: '', cards: [] }];
     };
+
+    const removeList = (event) => {
+        lists = lists.filter((list) => list.id !== event.detail.id);
+    };
 </script>
 
 <style type="text/scss">
@@ -43,8 +47,8 @@
 </style>
 
 <div class="container">
-    {#each lists as { name, cards }}
-        <List {name} {cards} />
+    {#each lists as { id, name, cards }}
+        <List {id} {name} {cards} on:removeList={removeList} />
     {/each}
     <NewListButton on:addNewList={createList} />
 </div>

@@ -1,10 +1,13 @@
 <script>
     import SVGContainer from './SVGContainer.svelte';
     import CancelSVG from '../assets/svgs/CancelSVG.svelte';
-
     import { createEventDispatcher } from 'svelte';
 
     const dispatch = createEventDispatcher();
+
+    function onRemoveList() {
+        dispatch('removeList');
+    }
 
     function onClosePopup() {
         dispatch('exitPopup');
@@ -75,6 +78,6 @@
     <ul>
         <li>Move List Left</li>
         <li>Move List Right</li>
-        <li>Remove from Board</li>
+        <li on:click={onRemoveList}>Remove from Board</li>
     </ul>
 </div>
