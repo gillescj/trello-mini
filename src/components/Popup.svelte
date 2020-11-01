@@ -2,8 +2,6 @@
     let windowWidth;
     let horizontalOffset = 'left';
     function setHorizontalOffset(element) {
-        console.log(element.getBoundingClientRect());
-        console.log(innerWidth);
         if (element.getBoundingClientRect().right > innerWidth - 20) {
             horizontalOffset = 'right';
         }
