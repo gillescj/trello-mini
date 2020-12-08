@@ -1,7 +1,7 @@
 <script>
     import { uniqueId } from 'lodash';
     import { swap } from '../utils/helpers';
-    import boardStore from '../store/stores';
+    import { boardStore } from '../store/stores';
     import List from './List.svelte';
     import NewListButton from './NewListButton.svelte';
 
