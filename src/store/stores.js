@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import { uniqueId } from 'lodash';
 
 export const boardStore = writable([
     {
