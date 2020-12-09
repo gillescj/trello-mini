@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { uniqueId } from 'lodash';
 
-const dummyData = [
+const sampleData = [
     {
         id: uniqueId('list-'),
         name: 'Current Tasks',
@@ -30,7 +30,7 @@ const dummyData = [
 ];
 
 function createBoardStore() {
-    const { subscribe, set, update } = writable(dummyData);
+    const { subscribe, set, update } = writable(sampleData);
 
     return {
         subscribe,
