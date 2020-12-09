@@ -15,7 +15,7 @@
 
     const dispatch = createEventDispatcher();
 
-    $: updateName(name);
+    $: boardStore.updateName(id, name);
 
     function onRemoveList() {
         dispatch('removeList', {
@@ -43,23 +43,7 @@
         }
         cardTitle = '';
 
-        $boardStore = $boardStore.map((list) => {
-            if (list.id === id) {
-                return { ...list, cards: cards };
-            } else {
-                return list;
-            }
-        });
-    };
-
-    const updateName = (newName) => {
-        $boardStore = $boardStore.map((list) => {
-            if (list.id === id) {
-                return { ...list, name: newName };
-            } else {
-                return list;
-            }
-        });
+        boardStore.updateCardList(id, cards);
     };
 
     const cancelNewCard = () => {
