@@ -4,10 +4,10 @@ import { uniqueId } from 'lodash';
 const dummyData = [
     {
         id: uniqueId('list-'),
-        name: 'Things To Do',
+        name: 'Current Tasks',
         cards: [
-            { title: 'Here is a card title for testing', order: 1 },
-            { title: 'Here is another riveting title', order: 2 },
+            { title: 'Redesign Project A3', order: 1 },
+            { title: 'Research for Potential Lead', order: 2 },
         ],
     },
     {
@@ -21,8 +21,11 @@ const dummyData = [
     },
     {
         id: uniqueId('list-'),
-        name: 'Done',
-        cards: [{ title: 'Not enough', order: 1 }],
+        name: 'Finished Tasks',
+        cards: [
+            { title: 'Project A2', order: 1 },
+            { title: 'Winter Campaign', order: 2 },
+        ],
     },
 ];
 
