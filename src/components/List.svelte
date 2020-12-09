@@ -145,7 +145,7 @@
         <Options on:moveList={onMoveList} on:removeList={onRemoveList} />
     </div>
     {#each cards as card}
-        <Card title={`${card.order} ${card.title}`} />
+        <Card title={card.title} />
     {/each}
     {#if newCard}
         <textarea bind:value={cardTitle} placeholder="Enter a title for this card..." />
