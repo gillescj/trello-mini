@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { uniqueId } from 'lodash';
 
-export const boardStore = writable([
+const dummyData = [
     {
         id: uniqueId('list-'),
         name: 'Things To Do',
@@ -24,4 +24,6 @@ export const boardStore = writable([
         name: 'Done',
         cards: [{ title: 'Not enough', order: 1 }],
     },
-]);
+];
+
+export const boardStore = writable(dummyData);
