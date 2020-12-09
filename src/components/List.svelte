@@ -1,4 +1,5 @@
 <script>
+    import { boardStore } from '../store/stores';
     import PlusSVG from '../assets/svgs/PlusSVG.svelte';
     import CancelSVG from '../assets/svgs/CancelSVG.svelte';
     import SVGContainer from './SVGContainer.svelte';
@@ -13,6 +14,8 @@
     let cardTitle;
 
     const dispatch = createEventDispatcher();
+
+    $: updateName(name);
 
     function onRemoveList() {
         dispatch('removeList', {
@@ -39,6 +42,24 @@
             cards = [...cards, { title: cardTitle, order: cards.length + 1 }];
         }
         cardTitle = '';
+
+        $boardStore = $boardStore.map((list) => {
+            if (list.id === id) {
+                return { ...list, cards: cards };
+            } else {
+                return list;
+            }
+        });
+    };
+
+    const updateName = (newName) => {
+        $boardStore = $boardStore.map((list) => {
+            if (list.id === id) {
+                return { ...list, name: newName };
+            } else {
+                return list;
+            }
+        });
     };
 
     const cancelNewCard = () => {
