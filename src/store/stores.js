@@ -29,4 +29,36 @@ const dummyData = [
     },
 ];
 
-export const boardStore = writable(dummyData);
+function createBoardStore() {
+    const { subscribe, set, update } = writable(dummyData);
+
+    return {
+        subscribe,
+        set,
+        update,
+        updateName: (id, name) => {
+            update((store) => {
+                return store.map((list) => {
+                    if (list.id === id) {
+                        return { ...list, name: name };
+                    } else {
+                        return list;
+                    }
+                });
+            });
+        },
+        updateCardList: (id, cards) => {
+            update((store) => {
+                return store.map((list) => {
+                    if (list.id === id) {
+                        return { ...list, cards: cards };
+                    } else {
+                        return list;
+                    }
+                });
+            });
+        },
+    };
+}
+
+export const boardStore = createBoardStore();
