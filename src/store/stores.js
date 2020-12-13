@@ -6,25 +6,25 @@ const sampleData = [
         id: uniqueId('list-'),
         name: 'Current Tasks',
         cards: [
-            { title: 'Redesign Project A3', order: 1 },
-            { title: 'Research for Potential Lead', order: 2 },
+            { title: 'Redesign Project A3', createdAt: 1 },
+            { title: 'Research for Potential Lead', createdAt: 2 },
         ],
     },
     {
         id: uniqueId('list-'),
         name: 'Bugs',
         cards: [
-            { title: 'Something wrong with x', order: 1 },
-            { title: 'Header scroll glitch on mobile', order: 2 },
-            { title: 'Onclick not working in chrome', order: 3 },
+            { title: 'Something wrong with x', createdAt: 1 },
+            { title: 'Header scroll glitch on mobile', createdAt: 2 },
+            { title: 'Onclick not working in chrome', createdAt: 3 },
         ],
     },
     {
         id: uniqueId('list-'),
         name: 'Finished Tasks',
         cards: [
-            { title: 'Project A2', order: 1 },
-            { title: 'Winter Campaign', order: 2 },
+            { title: 'Project A2', createdAt: 1 },
+            { title: 'Winter Campaign', createdAt: 2 },
         ],
     },
 ];
@@ -51,7 +51,10 @@ function createBoardStore() {
             update((store) => {
                 return store.map((list) => {
                     if (list.id === id) {
-                        return { ...list, cards: cards };
+                        return {
+                            ...list,
+                            cards: cards.sort((a, b) => a.createdAt - b.createdAt),
+                        };
                     } else {
                         return list;
                     }

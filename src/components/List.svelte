@@ -9,7 +9,7 @@
     import { createEventDispatcher } from 'svelte';
     export let id = 'list-0';
     export let name = 'Things To Do';
-    export let cards = [{ title: 'Here is a card title for testing', order: 1 }];
+    export let cards = [{ title: 'Here is a card title for testing', createdAt: 1 }];
     let newCard = false;
     let cardTitle;
 
@@ -39,7 +39,7 @@
     const addCard = () => {
         newCard = false;
         if (cardTitle.length > 0) {
-            cards = [...cards, { title: cardTitle, order: cards.length + 1 }];
+            cards = [...cards, { title: cardTitle, createdAt: Date.now() }];
         }
         cardTitle = '';
 
