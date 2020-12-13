@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { uniqueId } from 'lodash';
+import { swap } from '../utils/helpers';
 
 const sampleData = [
     {
@@ -59,6 +60,22 @@ function createBoardStore() {
                         return list;
                     }
                 });
+            });
+        },
+        removeList: (id) => {
+            update((store) => {
+                return store.filter((list) => list.id !== id);
+            });
+        },
+        moveList: (id, where) => {
+            update((store) => {
+                const targetIndex = store.findIndex((list) => list.id === id);
+                const swappingIndex =
+                    where === 'left' ? targetIndex - 1 : targetIndex + 1;
+                if (swappingIndex < 0 || swappingIndex > store.length - 1) {
+                    return store;
+                }
+                return swap(store, targetIndex, swappingIndex);
             });
         },
     };

@@ -6,28 +6,20 @@
     import Card from './Card.svelte';
     import TextAreaAuto from './TextAreaAuto.svelte';
     import Options from './Options.svelte';
-    import { createEventDispatcher } from 'svelte';
     export let id = 'list-0';
     export let name = 'Things To Do';
     export let cards = [{ title: 'Here is a card title for testing', createdAt: 1 }];
     let newCard = false;
     let cardTitle;
 
-    const dispatch = createEventDispatcher();
-
     $: boardStore.updateName(id, name);
 
     function onRemoveList() {
-        dispatch('removeList', {
-            id: id,
-        });
+        boardStore.removeList(id);
     }
 
     function onMoveList(event) {
-        dispatch('moveList', {
-            where: event.detail.where,
-            id,
-        });
+        boardStore.moveList(id, event.detail.where);
     }
 
     const onKeydown = (event) => {
