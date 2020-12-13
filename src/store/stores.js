@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store';
 import { uniqueId } from 'lodash';
-import { swap } from '../utils/helpers';
+import { swap, sortBy } from '../utils/helpers';
 
 const sampleData = [
     {
         id: uniqueId('list-'),
         name: 'Current Tasks',
+        sortOrder: 'asc',
         cards: [
             { title: 'Redesign Project A3', createdAt: 1 },
             { title: 'Research for Potential Lead', createdAt: 2 },
@@ -14,6 +15,7 @@ const sampleData = [
     {
         id: uniqueId('list-'),
         name: 'Bugs',
+        sortOrder: 'asc',
         cards: [
             { title: 'Something wrong with x', createdAt: 1 },
             { title: 'Header scroll glitch on mobile', createdAt: 2 },
@@ -23,6 +25,7 @@ const sampleData = [
     {
         id: uniqueId('list-'),
         name: 'Finished Tasks',
+        sortOrder: 'asc',
         cards: [
             { title: 'Project A2', createdAt: 1 },
             { title: 'Winter Campaign', createdAt: 2 },
@@ -54,7 +57,7 @@ function createBoardStore() {
                     if (list.id === id) {
                         return {
                             ...list,
-                            cards: cards.sort((a, b) => a.createdAt - b.createdAt),
+                            cards: sortBy(cards, list.sortOrder),
                         };
                     } else {
                         return list;
@@ -76,6 +79,34 @@ function createBoardStore() {
                     return store;
                 }
                 return swap(store, targetIndex, swappingIndex);
+            });
+        },
+        sortList: (id) => {
+            update((store) => {
+                return store.map((list) => {
+                    if (list.id === id) {
+                        return {
+                            ...list,
+                            cards: sortBy(list.cards, list.sortOrder),
+                        };
+                    } else {
+                        return list;
+                    }
+                });
+            });
+        },
+        setCardOrder: (id, order) => {
+            update((store) => {
+                return store.map((list) => {
+                    if (list.id === id) {
+                        return {
+                            ...list,
+                            sortOrder: order,
+                        };
+                    } else {
+                        return list;
+                    }
+                });
             });
         },
     };

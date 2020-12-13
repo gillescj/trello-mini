@@ -31,6 +31,7 @@
             <ListOptionsDropdown
                 on:moveList
                 on:removeList
+                on:sortCardOrder
                 on:exitPopup={() => (open = false)} />
         </Popup>
     {/if}

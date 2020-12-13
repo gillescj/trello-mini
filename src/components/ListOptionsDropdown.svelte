@@ -16,6 +16,10 @@
             where: direction,
         });
     }
+    function onSortCardOrder(order) {
+        dispatch('exitPopup');
+        dispatch('sortCardOrder', { order: order });
+    }
 
     function onClosePopup() {
         dispatch('exitPopup');
@@ -96,6 +100,12 @@
     <ul>
         <li on:click={(event) => onMoveList('left')}>Move List Left</li>
         <li on:click={(event) => onMoveList('right')}>Move List Right</li>
+        <li on:click={(event) => onSortCardOrder('desc')}>
+            Sort By Date Created (Newest First)
+        </li>
+        <li on:click={(event) => onSortCardOrder('asc')}>
+            Sort By Date Created (Oldest First)
+        </li>
         <li class="warning" on:click={onRemoveList}>Remove from Board</li>
     </ul>
 </div>

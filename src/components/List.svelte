@@ -22,6 +22,11 @@
         boardStore.moveList(id, event.detail.where);
     }
 
+    function onSortCardOrder(event) {
+        boardStore.setCardOrder(id, event.detail.order);
+        boardStore.sortList(id);
+    }
+
     const onKeydown = (event) => {
         if (event.code === 'Enter') {
             document.activeElement.blur();
@@ -118,7 +123,10 @@
 <div class="container">
     <div class="header">
         <TextAreaAuto bind:value={name} on:keydown={onKeydown} />
-        <Options on:moveList={onMoveList} on:removeList={onRemoveList} />
+        <Options
+            on:moveList={onMoveList}
+            on:removeList={onRemoveList}
+            on:sortCardOrder={onSortCardOrder} />
     </div>
     {#each cards as card}
         <Card title={card.title} />
