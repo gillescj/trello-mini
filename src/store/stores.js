@@ -42,27 +42,16 @@ function createBoardStore() {
         update,
         updateName: (id, name) => {
             update((store) => {
-                return store.map((list) => {
-                    if (list.id === id) {
-                        return { ...list, name: name };
-                    } else {
-                        return list;
-                    }
-                });
+                const index = store.findIndex((list) => list.id === id);
+                store[index].name = name;
+                return store;
             });
         },
         updateCardList: (id, cards) => {
             update((store) => {
-                return store.map((list) => {
-                    if (list.id === id) {
-                        return {
-                            ...list,
-                            cards: sortBy(cards, list.sortOrder),
-                        };
-                    } else {
-                        return list;
-                    }
-                });
+                const index = store.findIndex((list) => list.id === id);
+                store[index].cards = sortBy(cards, store[index].sortOrder);
+                return store;
             });
         },
         removeList: (id) => {
@@ -83,30 +72,16 @@ function createBoardStore() {
         },
         sortList: (id) => {
             update((store) => {
-                return store.map((list) => {
-                    if (list.id === id) {
-                        return {
-                            ...list,
-                            cards: sortBy(list.cards, list.sortOrder),
-                        };
-                    } else {
-                        return list;
-                    }
-                });
+                const index = store.findIndex((list) => list.id === id);
+                store[index].cards = sortBy(store[index].cards, store[index].sortOrder);
+                return store;
             });
         },
         setCardOrder: (id, order) => {
             update((store) => {
-                return store.map((list) => {
-                    if (list.id === id) {
-                        return {
-                            ...list,
-                            sortOrder: order,
-                        };
-                    } else {
-                        return list;
-                    }
-                });
+                const index = store.findIndex((list) => list.id === id);
+                store[index].sortOrder = order;
+                return store;
             });
         },
     };
