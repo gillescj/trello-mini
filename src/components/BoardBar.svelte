@@ -38,4 +38,4 @@
     }
 </style>
 
-<header><input bind:value={boardName} /> <button>New Board</button></header>
+<header><input bind:value={boardName} /></header>
