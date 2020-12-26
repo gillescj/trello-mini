@@ -1,6 +1,10 @@
 <script>
     import Board from "./Board.svelte";
     import BoardBar from "./BoardBar.svelte";
+    import { boardStore, boardName } from "../store/stores";
+
+    boardStore.useLocalStorage();
+    boardName.useLocalStorage();
 </script>
 
 <style>

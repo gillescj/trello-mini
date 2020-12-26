@@ -1,5 +1,5 @@
 <script>
-    let boardName = "Board Name";
+    import { boardName } from "../store/stores";
 </script>
 
 <style type="text/scss">
@@ -38,4 +38,4 @@
     }
 </style>
 
-<header><input bind:value={boardName} /></header>
+<header><input bind:value={$boardName} /></header>

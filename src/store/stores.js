@@ -33,13 +33,22 @@ const sampleData = [
     },
 ];
 
-function createBoardStore() {
-    const { subscribe, set, update } = writable(sampleData);
+function createBoardStore(key, startValue) {
+    const { subscribe, set, update } = writable(startValue);
 
     return {
         subscribe,
         set,
         update,
+        useLocalStorage: () => {
+            const json = localStorage.getItem(key);
+            if (json) {
+                set(JSON.parse(json));
+            }
+            subscribe((store) => {
+                localStorage.setItem(key, JSON.stringify(store));
+            });
+        },
         createList: (boardID) => {
             update((store) => {
                 store = [...store, { id: uniqueId('list-'), name: '', cards: [] }];
@@ -93,4 +102,24 @@ function createBoardStore() {
     };
 }
 
-export const boardStore = createBoardStore();
+function createBoardName(key, startValue) {
+    const { subscribe, set, update } = writable(startValue);
+
+    return {
+        subscribe,
+        set,
+        update,
+        useLocalStorage: () => {
+            const json = localStorage.getItem(key);
+            if (json) {
+                set(JSON.parse(json));
+            }
+            subscribe((store) => {
+                localStorage.setItem(key, JSON.stringify(store));
+            });
+        },
+    };
+}
+
+export const boardStore = createBoardStore('trello-mini-store', sampleData);
+export const boardName = createBoardName('trello-mini-name', 'Board Name 1');
