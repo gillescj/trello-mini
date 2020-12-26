@@ -122,4 +122,4 @@ function createBoardName(key, startValue) {
 }
 
 export const boardStore = createBoardStore('trello-mini-store', sampleData);
-export const boardName = createBoardName('trello-mini-name', 'Board Name 1');
+export const boardName = createBoardName('trello-mini-name', 'Board Name');
