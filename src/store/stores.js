@@ -40,6 +40,12 @@ function createBoardStore() {
         subscribe,
         set,
         update,
+        createList: (boardID) => {
+            update((store) => {
+                store = [...store, { id: uniqueId('list-'), name: '', cards: [] }];
+                return store;
+            });
+        },
         updateName: (id, name) => {
             update((store) => {
                 const index = store.findIndex((list) => list.id === id);

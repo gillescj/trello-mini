@@ -1,14 +1,10 @@
 <script>
-    import { uniqueId } from "lodash";
     import { boardStore } from "../store/stores";
     import List from "./List.svelte";
     import NewListButton from "./NewListButton.svelte";
 
     const createList = () => {
-        $boardStore = [
-            ...$boardStore,
-            { id: uniqueId("list-"), name: "", cards: [] },
-        ];
+        boardStore.createList("123");
     };
 </script>
 
