@@ -1,10 +1,10 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
     const addNewList = () => {
-        dispatch('addNewList');
+        dispatch("addNewList");
     };
 </script>
 

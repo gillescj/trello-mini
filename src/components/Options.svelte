@@ -1,8 +1,8 @@
 <script>
-    import MenuSVG from '../assets/svgs/MenuSVG.svelte';
-    import ListOptionsDropdown from './ListOptionsDropdown.svelte';
-    import Popup from './Popup.svelte';
-    import SVGContainer from './SVGContainer.svelte';
+    import MenuSVG from "../assets/svgs/MenuSVG.svelte";
+    import ListOptionsDropdown from "./ListOptionsDropdown.svelte";
+    import Popup from "./Popup.svelte";
+    import SVGContainer from "./SVGContainer.svelte";
 
     let open = false;
 </script>

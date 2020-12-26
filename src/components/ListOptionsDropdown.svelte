@@ -1,28 +1,28 @@
 <script>
-    import SVGContainer from './SVGContainer.svelte';
-    import CancelSVG from '../assets/svgs/CancelSVG.svelte';
-    import { createEventDispatcher } from 'svelte';
+    import SVGContainer from "./SVGContainer.svelte";
+    import CancelSVG from "../assets/svgs/CancelSVG.svelte";
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
     function onRemoveList() {
-        dispatch('exitPopup');
-        dispatch('removeList');
+        dispatch("exitPopup");
+        dispatch("removeList");
     }
 
     function onMoveList(direction) {
-        dispatch('exitPopup');
-        dispatch('moveList', {
+        dispatch("exitPopup");
+        dispatch("moveList", {
             where: direction,
         });
     }
     function onSortCardOrder(order) {
-        dispatch('exitPopup');
-        dispatch('sortCardOrder', { order: order });
+        dispatch("exitPopup");
+        dispatch("sortCardOrder", { order: order });
     }
 
     function onClosePopup() {
-        dispatch('exitPopup');
+        dispatch("exitPopup");
     }
 </script>
 
@@ -33,7 +33,8 @@
         background: white;
         padding: 0.5rem 0;
         border-radius: 0.25rem;
-        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
+            0 0 0 1px rgba(9, 30, 66, 0.08);
         header {
             display: grid;
             margin: 0 0.5rem;

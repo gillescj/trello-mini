@@ -1,5 +1,5 @@
 <script>
-    let boardName = 'Board Name';
+    let boardName = "Board Name";
 </script>
 
 <style type="text/scss">

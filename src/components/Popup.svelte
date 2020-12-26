@@ -1,9 +1,9 @@
 <script>
     let windowWidth;
-    let horizontalOffset = 'left';
+    let horizontalOffset = "left";
     function setHorizontalOffset(element) {
         if (element.getBoundingClientRect().right > innerWidth - 20) {
-            horizontalOffset = 'right';
+            horizontalOffset = "right";
         }
     }
 </script>
@@ -20,7 +20,10 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <div class="wrapper">
-    <div class="container" use:setHorizontalOffset style="{horizontalOffset}: 0">
+    <div
+        class="container"
+        use:setHorizontalOffset
+        style="{horizontalOffset}: 0">
         <slot />
     </div>
 </div>

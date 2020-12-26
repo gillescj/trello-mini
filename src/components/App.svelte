@@ -1,6 +1,6 @@
 <script>
-    import Board from './Board.svelte';
-    import BoardBar from './BoardBar.svelte';
+    import Board from "./Board.svelte";
+    import BoardBar from "./BoardBar.svelte";
 </script>
 
 <style>

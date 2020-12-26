@@ -1,14 +1,16 @@
 <script>
-    import { boardStore } from '../store/stores';
-    import PlusSVG from '../assets/svgs/PlusSVG.svelte';
-    import CancelSVG from '../assets/svgs/CancelSVG.svelte';
-    import SVGContainer from './SVGContainer.svelte';
-    import Card from './Card.svelte';
-    import TextAreaAuto from './TextAreaAuto.svelte';
-    import Options from './Options.svelte';
-    export let id = 'list-0';
-    export let name = 'Things To Do';
-    export let cards = [{ title: 'Here is a card title for testing', createdAt: 1 }];
+    import { boardStore } from "../store/stores";
+    import PlusSVG from "../assets/svgs/PlusSVG.svelte";
+    import CancelSVG from "../assets/svgs/CancelSVG.svelte";
+    import SVGContainer from "./SVGContainer.svelte";
+    import Card from "./Card.svelte";
+    import TextAreaAuto from "./TextAreaAuto.svelte";
+    import Options from "./Options.svelte";
+    export let id = "list-0";
+    export let name = "Things To Do";
+    export let cards = [
+        { title: "Here is a card title for testing", createdAt: 1 },
+    ];
     let newCard = false;
     let cardTitle;
 
@@ -28,7 +30,7 @@
     }
 
     const onKeydown = (event) => {
-        if (event.code === 'Enter') {
+        if (event.code === "Enter") {
             document.activeElement.blur();
         }
     };
@@ -38,14 +40,14 @@
         if (cardTitle.length > 0) {
             cards = [...cards, { title: cardTitle, createdAt: Date.now() }];
         }
-        cardTitle = '';
+        cardTitle = "";
 
         boardStore.updateCardList(id, cards);
     };
 
     const cancelNewCard = () => {
         newCard = false;
-        cardTitle = '';
+        cardTitle = "";
     };
 </script>
 
@@ -57,9 +59,10 @@
         padding: 0.4rem;
         background: hsl(228, 14%, 93%);
         border-radius: 0.25rem;
-        box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
-            0 0.3px 0px rgba(0, 0, 0, 0.035), 0 0.4px 0px rgba(0, 0, 0, 0.042),
-            0 0.8px 0px rgba(0, 0, 0, 0.05), 0 2px 0px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02),
+            0 0.1px 0px rgba(0, 0, 0, 0.028), 0 0.3px 0px rgba(0, 0, 0, 0.035),
+            0 0.4px 0px rgba(0, 0, 0, 0.042), 0 0.8px 0px rgba(0, 0, 0, 0.05),
+            0 2px 0px rgba(0, 0, 0, 0.07);
         margin: 0 0.25rem;
         flex-shrink: 0;
         &:first-child {
@@ -71,8 +74,10 @@
         }
 
         textarea {
-            box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02), 0 0.1px 0px rgba(0, 0, 0, 0.028),
-                0 0.3px 0px rgba(0, 0, 0, 0.035), 0 0.4px 0px rgba(0, 0, 0, 0.042),
+            box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.02),
+                0 0.1px 0px rgba(0, 0, 0, 0.028),
+                0 0.3px 0px rgba(0, 0, 0, 0.035),
+                0 0.4px 0px rgba(0, 0, 0, 0.042),
                 0 0.8px 0px rgba(0, 0, 0, 0.05), 0 2px 0px rgba(0, 0, 0, 0.07);
         }
 
@@ -132,7 +137,9 @@
         <Card title={card.title} />
     {/each}
     {#if newCard}
-        <textarea bind:value={cardTitle} placeholder="Enter a title for this card..." />
+        <textarea
+            bind:value={cardTitle}
+            placeholder="Enter a title for this card..." />
         <div class="new-card-options">
             <button class="add-card-btn" on:click={addCard}>Add Card</button>
             <button class="cancel-btn" on:click={cancelNewCard}>

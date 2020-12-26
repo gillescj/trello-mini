@@ -1,18 +1,18 @@
 <script>
-    const placeholderText = 'Enter List Name';
-    export let value = '';
+    const placeholderText = "Enter List Name";
+    export let value = "";
     function resize({ target }) {
-        target.style.height = '1px';
+        target.style.height = "1px";
         target.style.height = `${target.scrollHeight}px`;
     }
 
     function textAreaResize(el) {
         resize({ target: el });
-        el.style.overflow = 'hidden';
-        el.addEventListener('input', resize);
+        el.style.overflow = "hidden";
+        el.addEventListener("input", resize);
 
         return {
-            destroy: () => el.removeEventListener('input', resize),
+            destroy: () => el.removeEventListener("input", resize),
         };
     }
 </script>
