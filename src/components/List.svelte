@@ -1,5 +1,6 @@
 <script>
     import { boardStore } from "../store/stores";
+    import { uniqueId } from "lodash";
     import PlusSVG from "../assets/svgs/PlusSVG.svelte";
     import CancelSVG from "../assets/svgs/CancelSVG.svelte";
     import SVGContainer from "./SVGContainer.svelte";
@@ -38,7 +39,14 @@
     const addCard = () => {
         newCard = false;
         if (cardTitle.length > 0) {
-            cards = [...cards, { title: cardTitle, createdAt: Date.now() }];
+            cards = [
+                ...cards,
+                {
+                    id: uniqueId("card-"),
+                    title: cardTitle,
+                    createdAt: Date.now(),
+                },
+            ];
         }
         cardTitle = "";
 
@@ -134,7 +142,11 @@
             on:sortCardOrder={onSortCardOrder} />
     </div>
     {#each cards as card}
-        <Card title={card.title} />
+        <Card
+            title={card.title}
+            createdAt={card.createdAt}
+            listID={id}
+            id={card.id} />
     {/each}
     {#if newCard}
         <textarea
