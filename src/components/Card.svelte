@@ -30,6 +30,7 @@
         cursor: pointer;
         p {
             padding: 0.5rem;
+            word-break: break-all;
         }
     }
 </style>
